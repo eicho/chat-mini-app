@@ -1,0 +1,23 @@
+/* Current User Messages */
+.message.sent {
+  justify-content: flex-end;
+}
+
+.message.sent .message-content {
+  background-color: #4267b2;
+  color: #fff;
+  padding: 0;
+}
+
+.message.sent .message-icon {
+  background-color: #fff;
+}
+
+.message.sent .message-text {
+  background-color: #4267b2;
+  color: #fff;
+}
+
+.message.sent .message-sender {
+  display: none;
+}
