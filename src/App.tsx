@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import ChatRoom from "./components/ChatRoom";
+import { UserType } from "./types/user";
 
 function App() {
-  const [user, setUser] = useState(null);
-  const handleSignIn = (name) => {
+  const [user, setUser] = useState<UserType | null>(null);
+  const handleSignIn = (name: string) => {
     setUser({ id: uuidv4(), name });
   };
 
@@ -30,10 +31,14 @@ function App() {
   );
 }
 
-function SignIn({ onSignIn }) {
+interface SignInProps {
+  onSignIn: (name: string) => void;
+}
+
+function SignIn({ onSignIn }: SignInProps) {
   const [name, setName] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name.trim() !== "") {
       onSignIn(name);
@@ -55,7 +60,11 @@ function SignIn({ onSignIn }) {
   );
 }
 
-function SignOut({ onSignOut }) {
+interface SignOutProps {
+  onSignOut: () => void;
+}
+
+function SignOut({ onSignOut }: SignOutProps) {
   return (
     <button className="btn sign-out" onClick={onSignOut}>
       Sign Out
